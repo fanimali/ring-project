@@ -1,6 +1,6 @@
 # Cassandra Ring Analyzer
 
-A Python tool to analyze and visualize Cassandra token ring distribution with color-coded node ownership and gap detection.
+A comprehensive Python toolkit to analyze and visualize Cassandra token ring distribution with advanced features for multi-datacenter support, historical analysis, and rebalancing recommendations.
 
 ## Overview
 
@@ -15,15 +15,16 @@ This tool parses Cassandra `nodetool ring` output files and generates a circular
 ```
 ring-project/
 ├── README.md                           # This file
+├── ADVANCED_FEATURES.md                # Advanced features guide
 ├── requirements.txt                    # Python dependencies
-├── cassandra_ring_analyzer.py          # Main script
-├── ring                                # Sample ring file
+├── cassandra_ring_analyzer.py          # Main analyzer script
+├── multi_dc_analyzer.py                # Multi-datacenter support
+├── interactive_visualizer.py           # Interactive HTML visualizations
+├── historical_analyzer.py              # Historical trend analysis
+├── rebalancing_advisor.py              # Rebalancing recommendations
 ├── docs/
-│   ├── cassandra_ring_analyzer_spec.md # Technical specification
-│   ├── architecture_diagram.md         # Architecture diagrams
-│   └── implementation_guide.md         # Implementation details
-└── examples/
-    └── ring_visualization.png          # Example output
+│   └── cassandra_ring_analyzer_spec.md # Technical specification
+└── example-output/                     # Example visualizations
 ```
 
 ## Installation
@@ -99,6 +100,7 @@ Balance Score: 0.92 (1.0 = perfect balance)
 
 ## Features
 
+### Core Features
 - **Token Distribution Analysis**: Calculate and visualize how tokens are distributed across nodes
 - **Gap Detection**: Identify missing token ranges in the ring
 - **Color-Coded Visualization**: Each node gets a unique color for easy identification
@@ -106,18 +108,53 @@ Balance Score: 0.92 (1.0 = perfect balance)
 - **Multiple Output Formats**: Save as PNG, PDF, or SVG
 - **Interactive Mode**: View the visualization interactively with matplotlib
 
+### Advanced Features ✨ NEW
+- **Multi-Datacenter Support**: Analyze and compare multiple datacenters in a single view
+- **Interactive Visualizations**: Create zoomable, hoverable HTML dashboards with Plotly
+- **Historical Analysis**: Track ring changes over time and identify trends
+- **Rebalancing Recommendations**: Get intelligent suggestions for improving ring balance
+
+See [`ADVANCED_FEATURES.md`](ADVANCED_FEATURES.md) for detailed documentation.
+
 ## Requirements
 
 - Python 3.7+
 - matplotlib >= 3.5.0
 - numpy >= 1.21.0
+- plotly >= 5.0.0 (for interactive features)
+- pandas >= 1.3.0 (for advanced analysis)
+
+## Quick Start Examples
+
+### Basic Analysis
+```bash
+python cassandra_ring_analyzer.py ring.txt -o visualization.png
+```
+
+### Multi-Datacenter Analysis
+```bash
+python multi_dc_analyzer.py ring.txt --comparison -o dc_comparison.png
+```
+
+### Interactive Dashboard
+```bash
+python interactive_visualizer.py ring.txt --dashboard --show
+```
+
+### Historical Comparison
+```bash
+python historical_analyzer.py ring_before.txt ring_after.txt
+```
+
+### Rebalancing Recommendations
+```bash
+python rebalancing_advisor.py ring.txt --export-json rebalancing_plan.json
+```
 
 ## Documentation
 
-See the `docs/` directory for detailed technical documentation:
-- [`cassandra_ring_analyzer_spec.md`](docs/cassandra_ring_analyzer_spec.md) - Complete technical specification
-- [`architecture_diagram.md`](docs/architecture_diagram.md) - System architecture and flow diagrams
-- [`implementation_guide.md`](docs/implementation_guide.md) - Implementation details and algorithms
+- [`ADVANCED_FEATURES.md`](ADVANCED_FEATURES.md) - Complete guide to advanced features
+- [`docs/cassandra_ring_analyzer_spec.md`](docs/cassandra_ring_analyzer_spec.md) - Technical specification
 
 ## License
 
